@@ -215,3 +215,35 @@
 
 // let arr = [2, 5, 1, 46, 23];
 // console.log(insertionSort(arr)); // [1, 2, 5, 23, 46]
+
+function mergeSort(arr) {
+  if (arr.length === 1) return arr;
+
+  const midIdx = Math.floor(arr.length / 2);
+  const left = arr.slice(0, midIdx);
+  const right = arr.slice(midIdx);
+
+  const sortedLeft = mergeSort(left);
+  const sortedRight = mergeSort(right);
+
+  return merge(sortedLeft, sortedRight);
+}
+
+function merge(sortedLeft, sortedRight) {
+  const mergedArr = [];
+
+  while (sortedLeft.length > 0 && sortedRight.length > 0) {
+    if (sortedLeft[0] < sortedRight[0]) {
+      mergedArr.push(sortedLeft.shift())
+    } else if (sortedRight[0] < sortedLeft[0]) {
+      mergedArr.push(sortedRight.shift())
+    } else {
+      mergedArr.push(sortedRight.shift());
+    }
+  }
+
+  return mergedArr.concat(sortedLeft, sortedRight);
+}
+
+console.log(mergeSort([1, 5, 24, 76, 1, 3]))
+
