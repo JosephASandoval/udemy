@@ -71,7 +71,26 @@ class DoublyLinkedList {
     return this;
   }
 
-  
+  get(index) {
+    if (index < 0 || index >= this.length) return null;
+    let count, current;
+    if (index <= this.length / 2) {
+      count = 0;
+      current = this.head;
+      while (count !== index) {
+        current = current.next;
+        count++;
+      }
+    } else {
+      count = this.length - 1;
+      current = this.tail;
+      while (count !== index) {
+        current = current.prev;
+        count--;
+      }
+    }
+    return current;
+  }
 
   print() {
     const arr = [];
@@ -85,8 +104,10 @@ class DoublyLinkedList {
 }
 
 dList = new DoublyLinkedList();
+dList.push(0);
 dList.push(1);
 dList.push(2);
-const poppedNode = dList.pop();
-console.log(poppedNode);
+dList.push(3);
+dList.push(4);
 dList.print();
+console.log(dList.get(4));
