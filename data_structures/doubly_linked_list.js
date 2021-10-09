@@ -92,6 +92,19 @@ class DoublyLinkedList {
     return current;
   }
 
+  set(index, value) {
+    const foundNode = this.get(index);
+    if (foundNode) {
+      foundNode.value = value;
+      return true;
+    }
+    return false;
+  }
+
+  insert(index, value) {}
+
+  remove(index, value) {}
+
   print() {
     const arr = [];
     let current = this.head;
@@ -110,4 +123,4 @@ dList.push(2);
 dList.push(3);
 dList.push(4);
 dList.print();
-console.log(dList.get(4));
+console.log(dList.get(2));
