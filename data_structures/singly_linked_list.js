@@ -105,10 +105,10 @@ class SinglyLinkedList {
     if (index === this.length - 1) return this.pop();
 
     let previousNode = this.get(index - 1);
-    let removed = previousNode.next;
-    previousNode.next = removed.next;
+    let removedNode = previousNode.next;
+    previousNode.next = removedNode.next;
     this.length--;
-    return removed;
+    return removedNode;
   }
 
   reverse() {

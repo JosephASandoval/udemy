@@ -101,9 +101,37 @@ class DoublyLinkedList {
     return false;
   }
 
-  insert(index, value) {}
+  insert(index, value) {
+    if (index < 0 || index > this.length) return false;
+    if (index === 0) return !!this.unshift(value);
+    if (index === this.length) return !!this.push(value);
 
-  remove(index, value) {}
+    const newNode = new Node(value);
+    const beforeNode = this.get(index - 1);
+    const afterNode = beforeNode.next;
+
+    (beforeNode.next = newNode), (newNode.prev = beforeNode);
+    (newNode.next = afterNode), (afterNode.prev = newNode);
+    this.length++;
+    return true;
+  }
+
+  remove(index) {
+    if (index < 0 || index >= this.length) return null;
+    if (index === 0) return this.shift();
+    if (index === this.length - 1) return this.pop();
+
+    const beforeNode = this.get(index - 1);
+    const removedNode = beforeNode.next;
+    const afterNode = removedNode.next;
+
+    beforeNode.next = afterNode;
+    afterNode.prev = beforeNode;
+    removedNode.next = null;
+    removedNode.prev = null;
+    this.length--;
+    return removedNode;
+  }
 
   print() {
     const arr = [];
