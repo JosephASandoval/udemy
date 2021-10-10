@@ -137,12 +137,12 @@ class SinglyLinkedList {
   }
 }
 
-let list = new SinglyLinkedList();
-
-list.push(0);
-list.push(1);
-list.push(2);
-list.push(3);
-list.push(4);
-// list.reverse();
-list.print();
+const sList = new SinglyLinkedList();
+sList.push(0);
+sList.push(1);
+sList.push(2);
+sList.push(3);
+sList.push(4);
+sList.print();
+sList.reverse();
+sList.print();
