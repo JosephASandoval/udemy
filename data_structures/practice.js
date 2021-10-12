@@ -39,7 +39,9 @@ class BinarySearchTree {
     }
   }
 
-  
+  find(value) {
+    let current
+  }
 }
 
 //      10
