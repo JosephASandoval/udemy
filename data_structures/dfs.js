@@ -107,5 +107,5 @@ tree.insert(2);
 tree.insert(16);
 tree.insert(7);
 console.log(tree.DFSPreOrder());
-// console.log(tree.DFSPostOrder());
-// console.log(tree.DFSInOrder());
+console.log(tree.DFSPostOrder());
+console.log(tree.DFSInOrder());
