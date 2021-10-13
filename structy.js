@@ -246,3 +246,55 @@ const fiveSort = (nums) => {
   // Time: O(n)
   // Space: O(1)
 };
+
+const linkedListValues = (head) => {
+  // create an array that stores each node.val in order starting at the head
+  // approach: iterative
+
+  const values = [];
+
+  let current = head;
+  while (current !== null) {
+    values.push(current.val);
+    current = current.next;
+  }
+
+  return values;
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
+
+const linkedListValues = (head) => {
+  // create an array that stores each node.val in order starting at the head
+  // approach: recursive
+
+  if (head === null) return [];
+
+  return [head.val].concat(linkedListValues(head.next)); // [a] + [b, c, d]
+
+  // n = number of nodes
+  // Time: O(n^2)
+  // Space: O(n)
+};
+
+const linkedListValues = (head) => {
+  // create an array that stores each node.val in order starting at the head
+  // approach: recursive
+  // used a helper function to avoid recusive call from creating multiple arrays, which avoids a run time of O(n^2)
+
+  const values = [];
+  _linkedListValues(head, values);
+  return values;
+};
+
+const _linkedListValues = (head, values) => {
+  if (head === null) return;
+  values.push(head.val);
+  _linkedListValues(head.next, values);
+
+  // n = number of nodes
+  // Time: O(n^2)
+  // Space: O(n)
+};
