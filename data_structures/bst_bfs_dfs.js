@@ -21,7 +21,7 @@ class BinarySearchTree {
     let current = this.root;
 
     while (true) {
-      if (value === current.value) return undefined;
+      if (value === current.value) return undefinded;
 
       if (value < current.value) {
         if (current.left === null) {
@@ -68,6 +68,45 @@ class BinarySearchTree {
     }
     return data;
   }
+
+  DFSPreOrder() {
+    const data = [];
+
+    const traverse = (node) => {
+      data.push(node.value);
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+    };
+
+    traverse(this.root);
+    return data;
+  }
+
+  DFSPostOrder() {
+    const data = [];
+
+    const traverse = (node) => {
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+      data.push(node.value);
+    };
+
+    traverse(this.root);
+    return data;
+  }
+
+  DFSInOrder() {
+    const data = [];
+
+    const traverse = (node) => {
+      if (node.left) traverse(node.left);
+      data.push(node.value);
+      if (node.right) traverse(node.right);
+    };
+
+    traverse(this.root);
+    return data;
+  }
 }
 
 //      10
@@ -82,4 +121,8 @@ tree.insert(11);
 tree.insert(2);
 tree.insert(16);
 tree.insert(7);
-console.log(tree.BFS());
+// console.log(tree.includes(2));
+// console.log(tree.BFS());
+// console.log(tree.DFSPreOrder());
+// console.log(tree.DFSPostOrder());
+// console.log(tree.DFSInOrder());
