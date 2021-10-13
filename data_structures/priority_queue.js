@@ -1,24 +1,31 @@
+class Node {
+  constructor(value, priority) {
+    this.value = value;
+    this.priority = priority;
+  }
+}
+
 class PriorityQueue {
   constructor() {
     this.values = [];
   }
 
-  enqueue(val, priority) {
-    let newNode = new Node(val, priority);
+  enqueue(value, priority) {
+    let newNode = new Node(value, priority);
     this.values.push(newNode);
     this.bubbleUp();
   }
 
   bubbleUp() {
-    let idx = this.values.length - 1;
-    const element = this.values[idx];
-    while (idx > 0) {
-      let parentIdx = Math.floor((idx - 1) / 2);
+    let elementIdx = this.values.length - 1;
+    const element = this.values[elementIdx];
+    while (elementIdx > 0) {
+      let parentIdx = Math.floor((elementIdx - 1) / 2);
       let parent = this.values[parentIdx];
       if (element.priority >= parent.priority) break;
       this.values[parentIdx] = element;
-      this.values[idx] = parent;
-      idx = parentIdx;
+      this.values[elementIdx] = parent;
+      elementIdx = parentIdx;
     }
   }
 
@@ -31,14 +38,14 @@ class PriorityQueue {
     }
     return min;
   }
-  
+
   sinkDown() {
-    let idx = 0;
+    let elementIdx = 0;
     const length = this.values.length;
-    const element = this.values[0];
+    const element = this.values[elementIdx];
     while (true) {
-      let leftChildIdx = 2 * idx + 1;
-      let rightChildIdx = 2 * idx + 2;
+      let leftChildIdx = 2 * elementIdx + 1;
+      let rightChildIdx = 2 * elementIdx + 2;
       let leftChild, rightChild;
       let swap = null;
 
@@ -58,17 +65,10 @@ class PriorityQueue {
         }
       }
       if (swap === null) break;
-      this.values[idx] = this.values[swap];
+      this.values[elementIdx] = this.values[swap];
       this.values[swap] = element;
-      idx = swap;
+      elementIdx = swap;
     }
-  }
-}
-
-class Node {
-  constructor(val, priority) {
-    this.val = val;
-    this.priority = priority;
   }
 }
 
@@ -78,3 +78,11 @@ ER.enqueue("gunshot wound", 1);
 ER.enqueue("high fever", 4);
 ER.enqueue("broken arm", 2);
 ER.enqueue("glass in foot", 3);
+
+console.log(
+  ER.dequeue().priority,
+  ER.dequeue().priority,
+  ER.dequeue().priority,
+  ER.dequeue().priority,
+  ER.dequeue().priority
+);
