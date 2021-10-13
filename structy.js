@@ -45,7 +45,7 @@ const uncompress = (s) => {
   // create a results array to keep track of the letters
   // return the results array converted to a string
 
-  const results = [];
+  const result = [];
   const numbers = "0123456789";
   let i = 0;
   let j = 0;
@@ -57,16 +57,51 @@ const uncompress = (s) => {
     } else {
       let num = Number(s.slice(i, j));
       for (let count = 0; count < num; count++) {
-        results.push(char);
+        result.push(char);
       }
       j++;
       i = j;
     }
   }
-  return results.join("");
+  return result.join("");
 
   // n = number of groups
   // m = max num found in any group
   // Time: O(n * m)
   // Space: O(n * m)
+};
+
+const compress = (s) => {
+  // loop through the string
+  // find current value and check if equal to the next char
+  // create a count variable to keep track of the num chars
+  // if not equal then add the count to an array and then add the char to the array
+  // return the array
+
+  const result = [];
+  let i = 0;
+  let j = 0;
+
+  while (j <= s.length) {
+    let curr = s[i];
+    let next = s[j];
+
+    if (curr === next) {
+      j++;
+    } else {
+      const num = j - i;
+      if (num === 1) {
+        result.push(curr);
+      } else {
+        result.push(String(num), curr);
+      }
+      i = j;
+    }
+  }
+
+  return result.join("");
+
+  // n = length of string
+  // Time: O(n)
+  // Space: O(n)
 };
