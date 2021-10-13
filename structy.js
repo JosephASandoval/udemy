@@ -177,7 +177,7 @@ const pairSum = (numbers, targetSum) => {
 
 const pairProduct = (numbers, targetProduct) => {
   // use an object to keep track of numbers visited
-  
+
   const previousNums = {};
 
   for (let i = 0; i < numbers.length; i++) {
@@ -195,3 +195,26 @@ const pairProduct = (numbers, targetProduct) => {
   // Time: O(n)
   // Space: O(n)
 };
+
+const intersection = (a, b) => {
+  // use a set because using Set.has has a run time of O(1), while using Array.includes has a run time of O(n)
+
+  const numbers = [];
+
+  const setA = new Set(a);
+
+  for (const item of b) {
+    if (setA.has(item)) {
+      numbers.push(item);
+    }
+  }
+
+  return numbers;
+
+  // n = length of a
+  // m = length of b
+  // Time: O(n + m)
+  // Space: O(n)
+};
+
+
