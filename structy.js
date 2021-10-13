@@ -154,3 +154,21 @@ const mostFrequentChar = (s) => {
   // Space: O(n)
 };
 
+const pairSum = (numbers, targetSum) => {
+  // use an object to keep track of numbers visited
+
+  const previousNums = {};
+
+  for (let i = 0; i < numbers.length; i++) {
+    const num = numbers[i];
+    const complement = targetSum - num;
+    if (complement in previousNums) {
+      return [previousNums[complement], i];
+    }
+    previousNums[num] = i;
+  }
+
+  // n = length of input array
+  // Time: O(n)
+  // Space: O(n)
+};
