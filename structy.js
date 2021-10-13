@@ -105,3 +105,26 @@ const compress = (s) => {
   // Time: O(n)
   // Space: O(n)
 };
+
+const anagrams = (s1, s2) => {
+  // create an object to store the frequency of each char in the first string
+  // then remove the frequency of each char in the second string from that same object
+  // retun true if all of the values in that obj are 0
+
+  const counter = {};
+
+  for (const char of s1) {
+    counter[char] = (counter[char] || 0) + 1;
+  }
+
+  for (const char of s2) {
+    counter[char] = (counter[char] || 0) - 1;
+  }
+
+  return Object.values(counter).every((el) => el === 0);
+
+  // n = length of s1
+  // m = length of s2
+  // Time: O(n + m)
+  // Space: O(n)
+};
