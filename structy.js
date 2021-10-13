@@ -128,3 +128,29 @@ const anagrams = (s1, s2) => {
   // Time: O(n + m)
   // Space: O(n)
 };
+
+const mostFrequentChar = (s) => {
+  // create a counter object to keep track of the freq of each char
+  // then loop thru string figuring out which char has the highest freq
+  // update the best char only if the freq is great in order to maintain order in case of a tie
+
+  const counter = {};
+  let best = s[0];
+
+  for (const char of s) {
+    counter[char] = (counter[char] || 0) + 1;
+  }
+
+  for (const char of s) {
+    if (counter[char] > counter[best]) {
+      best = char;
+    }
+  }
+
+  return best;
+
+  // n = length of input string
+  // Time: O(n)
+  // Space: O(n)
+};
+
