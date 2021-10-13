@@ -32,17 +32,18 @@ class MaxBinaryHeap {
   }
 
   sinkDown() {
-    let idx = 0;
+    let elementIdx = 0;
     const length = this.values.length;
     const element = this.values[0];
     while (true) {
-      let leftChildIdx = 2 * idx + 1;
-      let rightChildIdx = 2 * idx + 2;
+      let leftChildIdx = 2 * elementIdx + 1;
+      let rightChildIdx = 2 * elementIdx + 2;
       let leftChild;
       let rightChild;
       let swap = null;
 
       if (leftChildIdx < length) {
+        // checking that it isn't out of bounds
         leftChild = this.values[leftChildIdx];
         if (leftChild > element) {
           swap = leftChildIdx;
@@ -50,6 +51,7 @@ class MaxBinaryHeap {
       }
 
       if (rightChildIdx < length) {
+        // checking that it isn't out of bounds
         rightChild = this.values[rightChildIdx];
         if (
           (swap === null && rightChild > element) ||
@@ -60,9 +62,9 @@ class MaxBinaryHeap {
       }
 
       if (swap === null) break;
-      this.values[idx] = this.values[swap];
+      this.values[elementIdx] = this.values[swap];
       this.values[swap] = element;
-      idx = swap;
+      elementIdx = swap;
     }
   }
 }
