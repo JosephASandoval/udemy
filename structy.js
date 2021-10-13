@@ -217,4 +217,32 @@ const intersection = (a, b) => {
   // Space: O(n)
 };
 
+const fiveSort = (nums) => {
+  // must mutate the original array
+  // must place all 5s at end of array
+  // approach: multiple pointers
 
+  const swap = (arr, idx1, idx2) => {
+    [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
+  };
+
+  let left = 0;
+  let right = nums.length - 1;
+
+  while (left < right) {
+    if (nums[right] === 5) {
+      right--;
+    } else if (nums[left] === 5) {
+      swap(nums, left, right);
+      left++;
+    } else {
+      left++;
+    }
+  }
+
+  return nums;
+
+  // n = length of input array
+  // Time: O(n)
+  // Space: O(1)
+};
