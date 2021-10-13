@@ -162,9 +162,32 @@ const pairSum = (numbers, targetSum) => {
   for (let i = 0; i < numbers.length; i++) {
     const num = numbers[i];
     const complement = targetSum - num;
+
     if (complement in previousNums) {
       return [previousNums[complement], i];
     }
+
+    previousNums[num] = i;
+  }
+
+  // n = length of input array
+  // Time: O(n)
+  // Space: O(n)
+};
+
+const pairProduct = (numbers, targetProduct) => {
+  // use an object to keep track of numbers visited
+  
+  const previousNums = {};
+
+  for (let i = 0; i < numbers.length; i++) {
+    const num = numbers[i];
+    const complement = targetProduct / num;
+
+    if (complement in previousNums) {
+      return [previousNums[complement], i];
+    }
+
     previousNums[num] = i;
   }
 
