@@ -114,7 +114,7 @@ class BinarySearchTree {
 // 2  7  11  16
 
 let tree = new BinarySearchTree();
-tree.insert(10);
+tree.insert(10); // declaring the root here
 tree.insert(5);
 tree.insert(13);
 tree.insert(11);
