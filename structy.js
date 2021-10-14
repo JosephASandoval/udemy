@@ -400,3 +400,42 @@ const getNodeValue = (head, index) => {
   // Time: O(n)
   // Space: O(n)
 };
+
+const reverseList = (head) => {
+  // to reverse a linked list you need a prev, current, and next node variables
+  // set prev and next to null
+  // set curr to the head
+  // approach: iterative
+
+  let curr = head;
+  let prev = null;
+  let next = null;
+  while (curr !== null) {
+    next = curr.next;
+    curr.next = prev;
+    prev = curr;
+    curr = next;
+  }
+
+  return prev;
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(1)
+};
+
+const reverseList = (head, prev = null) => {
+  // to reverse a linked list you need a prev, current, and next node variables
+  // set prev and next to null
+  // set curr to the head
+  // approach: recursive
+
+  if (head === null) return prev;
+  const next = head.next;
+  head.next = prev;
+  return reverseList(next, head);
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
