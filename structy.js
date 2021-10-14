@@ -585,3 +585,35 @@ const removeNode = (head, targetVal) => {
   // Time: O(n)
   // Space: O(1)
 };
+
+const insertNode = (head, value, index) => {
+  // loop
+  // add new node
+
+  const newNode = new Node(value);
+
+  if (index === 0) {
+    newNode.next = head;
+    return newNode;
+  }
+
+  let count = 0;
+  let curr = head;
+  let next = null;
+  while (curr !== null) {
+    if (count === index - 1) {
+      next = curr.next;
+      curr.next = newNode;
+      newNode.next = next;
+      break;
+    }
+    count++;
+    curr = curr.next;
+  }
+
+  return head;
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(1)
+};
