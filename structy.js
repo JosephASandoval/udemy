@@ -622,6 +622,7 @@ const createLinkedList = (values) => {
   // loop thru the array
   // create a new Node for each element
   // apply the next node
+  // approach: iterative
 
   const dummyHead = new Node(null);
   let tail = dummyHead;
@@ -631,6 +632,22 @@ const createLinkedList = (values) => {
   }
 
   return dummyHead.next;
+
+  // n = length of input array
+  // Time: O(n)
+  // Space: O(n)
+};
+
+const createLinkedList = (values, i = 0) => {
+  // loop thru the array
+  // create a new Node for each element
+  // apply the next node
+  // approach: recursive
+
+  if (i === values.length) return null;
+  const head = new Node(values[i]);
+  head.next = createLinkedList(values, i + 1);
+  return head;
 
   // n = length of input array
   // Time: O(n)
