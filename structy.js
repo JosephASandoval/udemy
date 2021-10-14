@@ -332,3 +332,35 @@ const sumList = (head) => {
   // Time: O(n)
   // Space: O(n)
 };
+
+const linkedListFind = (head, target) => {
+  // loop thru the linked list
+  // return true if val is the target
+  // approach: iterative
+
+  let current = head;
+  while (current !== null) {
+    if (current.val === target) return true;
+    current = current.next;
+  }
+
+  return false;
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(1)
+};
+
+const linkedListFind = (head, target) => {
+  // loop thru the linked list
+  // return true if val is the target
+  // approach: recursive
+
+  if (head === null) return false;
+  if (head.val === target) return true;
+  return linkedListFind(head.next, target);
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
