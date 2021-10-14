@@ -617,3 +617,22 @@ const insertNode = (head, value, index) => {
   // Time: O(n)
   // Space: O(1)
 };
+
+const createLinkedList = (values) => {
+  // loop thru the array
+  // create a new Node for each element
+  // apply the next node
+
+  const dummyHead = new Node(null);
+  let tail = dummyHead;
+  for (const val of values) {
+    tail.next = new Node(val);
+    tail = tail.next;
+  }
+
+  return dummyHead.next;
+
+  // n = length of input array
+  // Time: O(n)
+  // Space: O(n)
+};
