@@ -440,6 +440,13 @@ const reverseList = (head, prev = null) => {
   // Space: O(n)
 };
 
+class Node {
+  constructor(val) {
+    this.val = val;
+    this.next = null;
+  }
+}
+
 const zipperLists = (head1, head2) => {
   // need two variables to keep track of the next node to add
   // iterate thru both linked lists
