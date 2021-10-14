@@ -364,3 +364,39 @@ const linkedListFind = (head, target) => {
   // Time: O(n)
   // Space: O(n)
 };
+
+const getNodeValue = (head, index) => {
+  // loop thru linked list using a current variable rep the current node
+  // stop at specified index by looping until a certain number of times
+  // return the val at that point
+  // approach: iterative
+
+  let count = 0;
+  let current = head;
+  while (current !== null) {
+    if (count === index) return current.val;
+    current = current.next;
+    count++;
+  }
+  return null;
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(1)
+};
+
+const getNodeValue = (head, index) => {
+  // loop thru linked list using a current variable rep the current node
+  // stop at specified index by looping until a certain number of times
+  // return the val at that point
+  // approach: recursive
+
+  if (head === null) return null;
+  if (index === 0) return head.val;
+
+  return getNodeValue(head.next, index - 1);
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
