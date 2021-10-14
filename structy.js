@@ -512,3 +512,19 @@ const mergeLists = (head1, head2) => {
   // Time: O(min(n, m))
   // Space: O(1)
 };
+
+const isUnivalueList = (head) => {
+  // approach: iterative
+
+  let current = head;
+  while (current !== null) {
+    if (current.val !== head.val) return false;
+    current = current.next;
+  }
+
+  return true;
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(1)
+};
