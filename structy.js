@@ -299,7 +299,36 @@ const _linkedListValues = (head, values) => {
   // Space: O(n)
 };
 
+const sumList = (head) => {
+  // create a count variable to keep track of the total sum
+  // traverse thru the linked list and add each value
+  // approach: iterative
+
+  let count = 0;
+
+  let current = head;
+  while (current !== null) {
+    count += current.val;
+    current = current.next;
+  }
+
+  return count;
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(1)
+};
 
 const sumList = (head) => {
-  // todo
+  // create a count variable to keep track of the total sum
+  // traverse thru the linked list and add each value
+  // approach: recursive
+
+  if (head === null) return 0;
+
+  return sumList(head.next) + head.val;
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
 };
