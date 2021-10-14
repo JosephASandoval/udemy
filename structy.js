@@ -528,3 +528,33 @@ const isUnivalueList = (head) => {
   // Time: O(n)
   // Space: O(1)
 };
+
+const longestStreak = (head) => {
+  // loop thru linked list
+  // create a maxStreak var to keep track of the longest streak
+  // within the loop define a current streak to compare max streak with
+
+  let maxStreak = 0;
+  let currentStreak = 0;
+  let current = head;
+  let prevVal = null;
+
+  while (current !== null) {
+    if (current.val === prevVal) {
+      currentStreak++;
+    } else {
+      currentStreak = 1;
+    }
+
+    if (currentStreak > maxStreak) maxStreak = currentStreak;
+
+    prevVal = current.val;
+    current = current.next;
+  }
+
+  return maxStreak;
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(1)
+};
