@@ -447,19 +447,19 @@ const zipperLists = (head1, head2) => {
   // add remainder of links if one list runs out
   // return head1 at the end
 
-  let head = head1;
-  let tail = head;
-  let current1 = head1.next;
+  let dummyHead = new Node(null);
+  let tail = dummyHead;
+  let current1 = head1;
   let current2 = head2;
   let count = 0;
 
   while (current1 !== null && current2 !== null) {
     if (count % 2 === 0) {
-      tail.next = current2;
-      current2 = current2.next;
-    } else {
       tail.next = current1;
       current1 = current1.next;
+    } else {
+      tail.next = current2;
+      current2 = current2.next;
     }
     tail = tail.next;
     count++;
@@ -468,7 +468,7 @@ const zipperLists = (head1, head2) => {
   if (current1 !== null) tail.next = current1;
   if (current2 !== null) tail.next = current2;
 
-  return head;
+  return dummyHead.next;
 
   // n = length of list 1
   // m = length of list 2
@@ -476,4 +476,32 @@ const zipperLists = (head1, head2) => {
   // Space: O(1)
 };
 
+const mergeLists = (head1, head2) => {
+  // sort by comparing the value at each node
 
+  let dummyHead = new Node(null);
+  let tail = dummyHead;
+  let current1 = head1;
+  let current2 = head2;
+
+  while (current1 !== null && current2 !== null) {
+    if (current1.val < current2.val) {
+      tail.next = current1;
+      current1 = current1.next;
+    } else {
+      tail.next = current2;
+      current2 = current2.next;
+    }
+    tail = tail.next;
+  }
+
+  if (current1 !== null) tail.next = current1;
+  if (current2 !== null) tail.next = current2;
+
+  return dummyHead.next;
+
+  // n = length of list 1
+  // m = length of list 2
+  // Time: O(min(n, m))
+  // Space: O(1)
+};
