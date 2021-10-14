@@ -298,3 +298,8 @@ const _linkedListValues = (head, values) => {
   // Time: O(n^2)
   // Space: O(n)
 };
+
+
+const sumList = (head) => {
+  // todo
+};
