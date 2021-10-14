@@ -558,3 +558,30 @@ const longestStreak = (head) => {
   // Time: O(n)
   // Space: O(1)
 };
+
+const removeNode = (head, targetVal) => {
+  // loop
+  // delete first instance of node with target value
+
+  if (head.val === targetVal) {
+    let newList = head.next;
+    head.next = null;
+    return newList;
+  }
+
+  let curr = head;
+  let prev = null;
+  while (curr !== null) {
+    if (curr.val === targetVal) {
+      prev.next = curr.next;
+      curr.next = null;
+      return head;
+    }
+    prev = curr;
+    curr = curr.next;
+  }
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(1)
+};
