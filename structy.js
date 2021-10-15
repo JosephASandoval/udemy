@@ -685,7 +685,3 @@ const addLists = (head1, head2) => {
   // Time: O(max(n, m))
   // Space: O(max(n, m))
 };
-
-// const addLists = (head1, head2) => {
-
-// };
