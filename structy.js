@@ -688,6 +688,7 @@ const addLists = (head1, head2) => {
 
 const depthFirstValues = (root) => {
   // DFSPreOrder
+  // approach: iterative
 
   if (root === null) return [];
 
@@ -700,6 +701,31 @@ const depthFirstValues = (root) => {
   }
 
   traverse(root);
+  return data;
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
+
+const depthFirstValues = (root) => {
+  // DFSPreOrder
+  // approach: recursive
+
+  if (root === null) return [];
+
+  const data = [];
+  const stack = [];
+  let node = root;
+  stack.push(node);
+
+  while (stack.length > 0) {
+    node = stack.pop();
+    data.push(node.val);
+    if (node.right !== null) stack.push(node.right);
+    if (node.left !== null) stack.push(node.left);
+  }
+
   return data;
 
   // n = number of nodes
