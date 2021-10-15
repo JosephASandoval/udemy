@@ -599,12 +599,11 @@ const insertNode = (head, value, index) => {
 
   let count = 0;
   let curr = head;
-  let next = null;
+
   while (curr !== null) {
     if (count === index - 1) {
-      next = curr.next;
+      newNode.next = curr.next;
       curr.next = newNode;
-      newNode.next = next;
       break;
     }
     count++;
@@ -686,3 +685,7 @@ const addLists = (head1, head2) => {
   // Time: O(max(n, m))
   // Space: O(max(n, m))
 };
+
+// const addLists = (head1, head2) => {
+
+// };
