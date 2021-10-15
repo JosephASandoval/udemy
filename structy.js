@@ -653,3 +653,28 @@ const createLinkedList = (values, i = 0) => {
   // Time: O(n)
   // Space: O(n)
 };
+
+const addLists = (head1, head2) => {
+  const dummyHead = new Node(null);
+  let tail = dummyHead;
+
+  let carry = 0;
+  let curr1 = head1;
+  let curr2 = head2;
+
+  while (curr1 !== null || curr2 !== null || carry !== 0) {
+    const val1 = curr1 === null ? 0 : curr1.val;
+    const val2 = curr2 === null ? 0 : curr2.val;
+    const sum = val1 + val2 + carry;
+    carry = sum > 9 ? 1 : 0;
+
+    const digit = sum % 10;
+    tail.next = new Node(digit);
+    tail = tail.next;
+
+    if (curr1 !== null) curr1 = curr1.next;
+    if (curr2 !== null) curr2 = curr2.next;
+  }
+
+  return dummyHead.next;
+};
