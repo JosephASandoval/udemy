@@ -55,6 +55,7 @@ class BinarySearchTree {
   }
 
   BFS() {
+    if (this.root === null) return [];
     const data = [];
     const queue = [];
     let node = this.root; // initialize node
@@ -71,6 +72,7 @@ class BinarySearchTree {
   }
 
   DFSPreOrder() {
+    if (this.root === null) return [];
     const data = [];
 
     const traverse = (node) => {
@@ -84,6 +86,7 @@ class BinarySearchTree {
   }
 
   DFSPostOrder() {
+    if (this.root === null) return [];
     const data = [];
 
     const traverse = (node) => {
@@ -97,6 +100,7 @@ class BinarySearchTree {
   }
 
   DFSInOrder() {
+    if (this.root === null) return [];
     const data = [];
 
     const traverse = (node) => {

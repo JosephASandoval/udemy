@@ -687,5 +687,22 @@ const addLists = (head1, head2) => {
 };
 
 const depthFirstValues = (root) => {
-  // todo
+  // DFSPreOrder
+
+  if (root === null) return [];
+
+  const data = [];
+
+  function traverse(node) {
+    data.push(node.val);
+    if (node.left !== null) traverse(node.left);
+    if (node.right !== null) traverse(node.right);
+  }
+
+  traverse(root);
+  return data;
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
 };
