@@ -655,6 +655,9 @@ const createLinkedList = (values, i = 0) => {
 };
 
 const addLists = (head1, head2) => {
+  // use the dummyHead pattern
+  // approach: iterative
+
   const dummyHead = new Node(null);
   let tail = dummyHead;
 
@@ -677,4 +680,9 @@ const addLists = (head1, head2) => {
   }
 
   return dummyHead.next;
+
+  // n = length of list 1
+  // m = length of list 2
+  // Time: O(max(n, m))
+  // Space: O(max(n, m))
 };
