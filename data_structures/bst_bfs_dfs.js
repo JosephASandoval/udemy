@@ -55,17 +55,18 @@ class BinarySearchTree {
   }
 
   BFS() {
-    let node = this.root;
     const data = [];
     const queue = [];
+    let node = this.root; // initialize node
     queue.push(node);
 
-    while (queue.length) {
-      node = queue.shift();
-      data.push(node.value);
-      if (node.left) queue.push(node.left);
-      if (node.right) queue.push(node.right);
+    while (queue.length !== 0) {
+      node = queue.shift(); // current node we work with
+      data.push(node.value); // record the current node's value
+      if (node.left !== null) queue.push(node.left); // add left node
+      if (node.right !== null) queue.push(node.right); // add right node
     }
+
     return data;
   }
 
