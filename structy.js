@@ -732,3 +732,28 @@ const depthFirstValues = (root) => {
   // Time: O(n)
   // Space: O(n)
 };
+
+const breadthFirstValues = (root) => {
+  // BFS
+  // approach: iterative
+
+  if (root === null) return [];
+
+  const data = [];
+  const queue = [];
+  let node = root;
+  queue.push(node);
+
+  while (queue.length > 0) {
+    node = queue.shift();
+    data.push(node.val);
+    if (node.left !== null) queue.push(node.left);
+    if (node.right !== null) queue.push(node.right);
+  }
+
+  return data;
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
