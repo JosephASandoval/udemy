@@ -113,7 +113,7 @@ class BinarySearchTree {
 //   5     13
 // 2  7  11  16
 
-let tree = new BinarySearchTree();
+const tree = new BinarySearchTree();
 tree.insert(10); // declaring the root here
 tree.insert(5);
 tree.insert(13);
@@ -121,8 +121,8 @@ tree.insert(11);
 tree.insert(2);
 tree.insert(16);
 tree.insert(7);
-// console.log(tree.includes(2));
-// console.log(tree.BFS());
-// console.log(tree.DFSPreOrder());
-// console.log(tree.DFSPostOrder());
-// console.log(tree.DFSInOrder());
+// console.log(tree.includes(2)); // true
+// console.log(tree.BFS()); // [ 10, 5, 13, 2, 7, 11, 16 ]
+// console.log(tree.DFSPreOrder()); // [ 10, 5, 2, 7, 13, 11, 16 ]
+// console.log(tree.DFSPostOrder()); // [ 2, 7, 5, 11, 16, 13, 10 ]
+// console.log(tree.DFSInOrder()); // [ 2, 5, 7, 10, 11, 13, 16 ]
