@@ -75,8 +75,8 @@ class BinarySearchTree {
 
     const traverse = (node) => {
       data.push(node.value);
-      if (node.left) traverse(node.left);
-      if (node.right) traverse(node.right);
+      if (node.left !== null) traverse(node.left);
+      if (node.right !== null) traverse(node.right);
     };
 
     traverse(this.root);
@@ -87,8 +87,8 @@ class BinarySearchTree {
     const data = [];
 
     const traverse = (node) => {
-      if (node.left) traverse(node.left);
-      if (node.right) traverse(node.right);
+      if (node.left !== null) traverse(node.left);
+      if (node.right !== null) traverse(node.right);
       data.push(node.value);
     };
 
@@ -100,9 +100,9 @@ class BinarySearchTree {
     const data = [];
 
     const traverse = (node) => {
-      if (node.left) traverse(node.left);
+      if (node.left !== null) traverse(node.left);
       data.push(node.value);
-      if (node.right) traverse(node.right);
+      if (node.right !== null) traverse(node.right);
     };
 
     traverse(this.root);
