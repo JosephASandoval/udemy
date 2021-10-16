@@ -688,7 +688,7 @@ const addLists = (head1, head2) => {
 
 const depthFirstValues = (root) => {
   // DFSPreOrder
-  // approach: iterative
+  // approach: recursive 1
 
   if (root === null) return [];
 
@@ -709,8 +709,17 @@ const depthFirstValues = (root) => {
 };
 
 const depthFirstValues = (root) => {
+  // stack -> push/pop on an array for better time complexity
+  // approach: recursive 2
+  if (root === null) return [];
+  const leftValues = depthFirstValues(root.left);
+  const rightValues = depthFirstValues(root.right);
+  return [root.val, ...leftValues, ...rightValues];
+};
+
+const depthFirstValues = (root) => {
   // DFSPreOrder
-  // approach: recursive
+  // approach: iterative
 
   if (root === null) return [];
 
