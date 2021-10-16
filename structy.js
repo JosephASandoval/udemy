@@ -768,5 +768,24 @@ const breadthFirstValues = (root) => {
 };
 
 const treeIncludes = (root, target) => {
-  // todo
+  // use iterative DFS
+
+  if (root === null) return false;
+
+  const data = [];
+  const stack = [root];
+
+  while (stack.length > 0) {
+    let node = stack.pop();
+    data.push(node.val);
+    if (node.left) stack.push(node.left);
+    if (node.right) stack.push(node.right);
+  }
+
+  return data.includes(target);
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
 };
+
