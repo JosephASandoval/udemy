@@ -799,3 +799,36 @@ const treeIncludes = (root, target) => {
   // Time: O(n)
   // Space: O(n)
 };
+
+const treeSum = (root) => {
+  // use DFS recursion
+
+  if (root === null) return 0;
+  return root.val + treeSum(root.left) + treeSum(root.right);
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
+
+const treeSum = (root) => {
+  // use BFS
+
+  if (root === null) return 0;
+
+  const queue = [root];
+  let sum = 0;
+
+  while (queue.length > 0) {
+    let node = queue.shift();
+    sum += node.val;
+    if (node.left) queue.push(node.left);
+    if (node.right) queue.push(node.right);
+  }
+
+  return sum;
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
