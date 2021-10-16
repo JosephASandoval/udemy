@@ -768,24 +768,34 @@ const breadthFirstValues = (root) => {
 };
 
 const treeIncludes = (root, target) => {
-  // use iterative DFS
+  // approach: iterative using BSF
 
   if (root === null) return false;
 
-  const data = [];
   const stack = [root];
 
   while (stack.length > 0) {
     let node = stack.pop();
-    data.push(node.val);
-    if (node.left) stack.push(node.left);
-    if (node.right) stack.push(node.right);
+    if (node.val === target) return true;
+    if (node.left !== null) stack.push(node.left);
+    if (node.right !== null) stack.push(node.right);
   }
 
-  return data.includes(target);
+  return false;
 
   // n = number of nodes
   // Time: O(n)
   // Space: O(n)
 };
 
+const treeIncludes = (root, target) => {
+  // approach: recursive using DFS
+
+  if (root === null) return false;
+  if (root.val === target) return true;
+  return treeIncludes(root.left, target) || treeIncludes(root.right, target);
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
