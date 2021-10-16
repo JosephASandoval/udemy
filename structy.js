@@ -832,3 +832,59 @@ const treeSum = (root) => {
   // Time: O(n)
   // Space: O(n)
 };
+
+const treeMinValue = (root) => {
+  // approach: recursive 1
+
+  if (root === null) return Infinity;
+  const smallestLeftValue = treeMinValue(root.left);
+  const smallestRightValue = treeMinValue(root.right);
+  return Math.min(root.val, smallestLeftValue, smallestRightValue);
+  
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
+
+const treeMinValue = (root) => {
+  // approach: recursive 2
+
+  if (root === null) return undefined;
+
+  let minValue = Infinity;
+
+  const traverse = (node) => {
+    if (node.val < minValue) minValue = node.val;
+    if (node.left !== null) traverse(node.left);
+    if (node.right !== null) traverse(node.right);
+  };
+
+  traverse(root);
+  return minValue;
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
+
+const treeMinValue = (root) => {
+  // approach: BFS
+
+  if (root === null) return undefined;
+
+  const queue = [root];
+  let minVal = Infinity;
+
+  while (queue.length > 0) {
+    const node = queue.shift();
+    if (node.val < minVal) minVal = node.val;
+    if (node.left !== null) queue.push(node.left);
+    if (node.right !== null) queue.push(node.right);
+  }
+
+  return minVal;
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
