@@ -840,7 +840,7 @@ const treeMinValue = (root) => {
   const smallestLeftValue = treeMinValue(root.left);
   const smallestRightValue = treeMinValue(root.right);
   return Math.min(root.val, smallestLeftValue, smallestRightValue);
-  
+
   // n = number of nodes
   // Time: O(n)
   // Space: O(n)
@@ -883,6 +883,19 @@ const treeMinValue = (root) => {
   }
 
   return minVal;
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
+
+const maxPathSum = (root) => {
+  // you've hit a leaf when there is no left or right node
+
+  if (root === null) return -Infinity;
+  if (root.left === null && root.right === null) return root.val;
+  const maxChildPath = Math.max(maxPathSum(root.left), maxPathSum(root.right));
+  return root.val + maxChildPath;
 
   // n = number of nodes
   // Time: O(n)
