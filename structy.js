@@ -1063,7 +1063,7 @@ const treeLevels = (root) => {
 };
 
 const fillLevels = (root, levels, levelNum) => {
-  if (root === null) return [];
+  if (root === null) return;
 
   if (levels.length === levelNum) {
     levels[levelNum] = [root.val];
@@ -1103,7 +1103,7 @@ const levelAverages = (root) => {
   }
 
   const answer = averages.map((level) => {
-    const sum = level.reduce((a, b) => a + b, 0);
+    const sum = level.reduce((acc, curr) => acc + curr, 0);
     const avg = sum / level.length || 0;
     return avg;
   });
@@ -1114,10 +1114,31 @@ const levelAverages = (root) => {
   // Time: O(n)
   // Space: O(n)
 };
+
 const levelAverages = (root) => {
   // use recursion
 
-  if (root === null) return [];
+  const levels = [];
+  fillLevels(root, levels, 0);
+  const answer = levels.map((level) => {
+    const sum = level.reduce((acc, curr) => acc + curr, 0);
+    const avg = sum / level.length || 0;
+    return avg;
+  });
+  return answer;
+};
+
+const fillLevels = (root, levels, levelNum) => {
+  if (root === null) return;
+
+  if (levels.length === levelNum) {
+    levels[levelNum] = [root.val];
+  } else {
+    levels[levelNum].push(root.val);
+  }
+
+  fillLevels(root.left, levels, levelNum + 1);
+  fillLevels(root.right, levels, levelNum + 1);
 
   // n = number of nodes
   // Time: O(n)
