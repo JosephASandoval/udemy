@@ -724,12 +724,10 @@ const depthFirstValues = (root) => {
   if (root === null) return [];
 
   const data = [];
-  const stack = [];
-  let node = root;
-  stack.push(node);
+  const stack = [root];
 
   while (stack.length > 0) {
-    node = stack.pop();
+    let node = stack.pop();
     data.push(node.val);
     if (node.right !== null) stack.push(node.right);
     if (node.left !== null) stack.push(node.left);
@@ -749,12 +747,10 @@ const breadthFirstValues = (root) => {
   if (root === null) return [];
 
   const data = [];
-  const queue = [];
-  let node = root;
-  queue.push(node);
+  const queue = [root];
 
   while (queue.length > 0) {
-    node = queue.shift();
+    let node = queue.shift();
     data.push(node.val);
     if (node.left !== null) queue.push(node.left);
     if (node.right !== null) queue.push(node.right);
