@@ -964,3 +964,19 @@ const treeValueCount = (root, target) => {
   // Time: O(n)
   // Space: O(n)
 };
+
+const howHigh = (node) => {
+  // use DFS recursion
+
+  if (node === null) return -1;
+  const maxHeight = Math.max(howHigh(node.left), howHigh(node.right));
+  return maxHeight + 1;
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
+
+const bottomRightValue = (root) => {
+  // todo
+};
