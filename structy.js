@@ -1053,3 +1053,28 @@ const treeLevels = (root) => {
   // Time: O(n)
   // Space: O(n)
 };
+
+const treeLevels = (root) => {
+  // use recursion
+
+  const levels = [];
+  fillLevels(root, levels, 0);
+  return levels;
+};
+
+const fillLevels = (root, levels, levelNum) => {
+  if (root === null) return null;
+
+  if (levels.length === levelNum) {
+    levels[levelNum] = [root.val];
+  } else {
+    levels[levelNum].push(root.val);
+  }
+
+  fillLevels(root.left, levels, levelNum + 1);
+  fillLevels(root.right, levels, levelNum + 1);
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
