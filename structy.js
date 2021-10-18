@@ -1120,12 +1120,14 @@ const levelAverages = (root) => {
 
   const levels = [];
   fillLevels(root, levels, 0);
-  const answer = levels.map((level) => {
-    const sum = level.reduce((acc, curr) => acc + curr, 0);
-    const avg = sum / level.length || 0;
-    return avg;
-  });
+  const answer = levels.map(getAvg);
   return answer;
+};
+
+const getAvg = (arr) => {
+  const sum = arr.reduce((acc, curr) => acc + curr, 0);
+  const avg = sum / arr.length || 0;
+  return avg;
 };
 
 const fillLevels = (root, levels, levelNum) => {
