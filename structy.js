@@ -978,5 +978,22 @@ const howHigh = (node) => {
 };
 
 const bottomRightValue = (root) => {
-  // todo
+  // bottom most takes precedence
+  // then take the right most value
+  // use BFS
+
+  const queue = [root];
+  let current = null;
+
+  while (queue.length > 0) {
+    current = queue.shift();
+    if (current.left !== null) queue.push(current.left);
+    if (current.right !== null) queue.push(current.right);
+  }
+
+  return current.val;
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
 };
