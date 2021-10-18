@@ -901,3 +901,56 @@ const maxPathSum = (root) => {
   // Time: O(n)
   // Space: O(n)
 };
+
+const pathFinder = (root, target) => {
+  // use DFS recursion; less efficient
+
+  if (root === null) return null;
+  if (root.val === target) return [root.val];
+
+  const leftPath = pathFinder(root.left, target);
+  if (leftPath !== null) return [root.val, ...leftPath];
+
+  const rightPath = pathFinder(root.right, target);
+  if (rightPath !== null) return [root.val, ...rightPath];
+
+  return null;
+
+  // n = number of nodes
+  // Time: O(n^2) because the spread operation is O(n)
+  // Space: O(n)
+};
+
+const pathFinder = (root, target) => {
+  // use DFS recursion; less efficient
+
+  const result = pathFinderHelper(root, target);
+  if (result === null) {
+    return null;
+  } else {
+    return result.reverse();
+  }
+};
+
+const pathFinderHelper = (root, target) => {
+  if (root === null) return null;
+  if (root.val === target) return [root.val];
+
+  const leftPath = pathFinderHelper(root.left, target);
+  if (leftPath !== null) {
+    leftPath.push(root.val);
+    return leftPath;
+  }
+
+  const rightPath = pathFinderHelper(root.right, target);
+  if (rightPath !== null) {
+    rightPath.push(root.val);
+    return rightPath;
+  }
+
+  return null;
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
