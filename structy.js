@@ -950,3 +950,17 @@ const pathFinderHelper = (root, target) => {
   // Time: O(n)
   // Space: O(n)
 };
+
+const treeValueCount = (root, target) => {
+  // use DFS recursion
+
+  if (root === null) return 0;
+  const match = root.val === target ? 1 : 0;
+  const leftCount = treeValueCount(root.left, target);
+  const rightCount = treeValueCount(root.right, target);
+  return match + leftCount + rightCount;
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
