@@ -1063,7 +1063,7 @@ const treeLevels = (root) => {
 };
 
 const fillLevels = (root, levels, levelNum) => {
-  if (root === null) return null;
+  if (root === null) return [];
 
   if (levels.length === levelNum) {
     levels[levelNum] = [root.val];
@@ -1073,6 +1073,51 @@ const fillLevels = (root, levels, levelNum) => {
 
   fillLevels(root.left, levels, levelNum + 1);
   fillLevels(root.right, levels, levelNum + 1);
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
+
+const levelAverages = (root) => {
+  // use BFS
+
+  if (root === null) return [];
+
+  let averages = [];
+  const queue = [{ node: root, levelNum: 0 }];
+
+  while (queue.length > 0) {
+    const { node, levelNum } = queue.shift();
+
+    if (averages.length === levelNum) {
+      averages[levelNum] = [node.val];
+    } else {
+      averages[levelNum].push(node.val);
+    }
+
+    if (node.left !== null)
+      queue.push({ node: node.left, levelNum: levelNum + 1 });
+    if (node.right !== null)
+      queue.push({ node: node.right, levelNum: levelNum + 1 });
+  }
+
+  const answer = averages.map((level) => {
+    const sum = level.reduce((a, b) => a + b, 0);
+    const avg = sum / level.length || 0;
+    return avg;
+  });
+
+  return answer;
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
+const levelAverages = (root) => {
+  // use recursion
+
+  if (root === null) return [];
 
   // n = number of nodes
   // Time: O(n)
