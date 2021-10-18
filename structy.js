@@ -997,3 +997,29 @@ const bottomRightValue = (root) => {
   // Time: O(n)
   // Space: O(n)
 };
+
+const allTreePaths = (root) => {
+  // use DFS recursion
+
+  if (root === null) return [];
+
+  if (root.left === null && root.right === null) return [[root.val]];
+
+  const paths = [];
+
+  const leftSubPaths = allTreePaths(root.left);
+  for (let subPath of leftSubPaths) {
+    paths.push([root.val, ...subPath]);
+  }
+
+  const rightSubPaths = allTreePaths(root.right);
+  for (let subPath of rightSubPaths) {
+    paths.push([root.val, ...subPath]);
+  }
+
+  return paths;
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
