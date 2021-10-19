@@ -1167,3 +1167,29 @@ const leafListHelper = (root, leaves) => {
   // Time: O(n)
   // Space: O(n)
 };
+
+const leafList = (root) => {
+  // use DFS iteration
+
+  if (root === null) return [];
+
+  const stack = [root];
+  const leaves = [];
+
+  while (stack.length > 0) {
+    let node = stack.pop()
+
+    if (node.left === null && node.right === null) {
+      leaves.push(node.val)
+    }
+
+    if (node.right !== null) stack.push(node.right)
+    if (node.left !== null) stack.push(node.left)
+  }
+
+  return leaves;
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
