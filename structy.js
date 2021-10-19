@@ -1156,7 +1156,7 @@ const leafList = (root) => {
 };
 
 const leafListHelper = (root, leaves) => {
-  if (root === null) return [];
+  if (root === null) return;
 
   if (root.left === null && root.right === null) leaves.push(root.val);
 
@@ -1177,14 +1177,14 @@ const leafList = (root) => {
   const leaves = [];
 
   while (stack.length > 0) {
-    let node = stack.pop()
+    let node = stack.pop();
 
     if (node.left === null && node.right === null) {
-      leaves.push(node.val)
+      leaves.push(node.val);
     }
 
-    if (node.right !== null) stack.push(node.right)
-    if (node.left !== null) stack.push(node.left)
+    if (node.right !== null) stack.push(node.right);
+    if (node.left !== null) stack.push(node.left);
   }
 
   return leaves;
