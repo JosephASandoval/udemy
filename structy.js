@@ -1146,3 +1146,24 @@ const fillLevels = (root, levels, levelNum) => {
   // Time: O(n)
   // Space: O(n)
 };
+
+const leafList = (root) => {
+  // use DFS recursion
+
+  const leaves = [];
+  leafListHelper(root, leaves);
+  return leaves;
+};
+
+const leafListHelper = (root, leaves) => {
+  if (root === null) return [];
+
+  if (root.left === null && root.right === null) leaves.push(root.val);
+
+  const leftLeaves = leafListHelper(root.left, leaves);
+  const rightLeaves = leafListHelper(root.right, leaves);
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
