@@ -4,7 +4,7 @@ class HashTable {
   }
 
   _hash(key) {
-    // Given Hash func: 1) fast 2) uniformly distributes inputs 3)deterministic
+    // Given Hash func: 1)fast 2)uniformly distributes inputs 3)deterministic
     let total = 0;
     let WEIRD_PRIME = 31;
 
@@ -40,13 +40,51 @@ class HashTable {
 
     return undefined;
   }
+
+  keys() {
+    let keysArr = [];
+
+    for (let i = 0; i < this.keyMap.length; i++) {
+      if (this.keyMap[i]) {
+        for (let j = 0; j < this.keyMap[i].length; j++) {
+          if (!keysArr.includes(this.keyMap[i][j][0])) {
+            keysArr.push(this.keyMap[i][j][0]);
+          }
+        }
+      }
+    }
+
+    return keysArr;
+  }
+
+  values() {
+    let valuesArr = [];
+
+    for (let i = 0; i < this.keyMap.length; i++) {
+      if (this.keyMap[i]) {
+        for (let j = 0; j < this.keyMap[i].length; j++) {
+          if (!valuesArr.includes(this.keyMap[i][j][1])) {
+            valuesArr.push(this.keyMap[i][j][1]);
+          }
+        }
+      }
+    }
+
+    return valuesArr;
+  }
 }
 
-let hashTable = new HashTable(17);
-hashTable.set("maroon", "#800000");
-hashTable.set("yellow", "#FFFF00");
-hashTable.set("olive", "#808000");
-hashTable.set("salmon", "#FA8072");
-hashTable.set("lightcoral", "#F08080");
-hashTable.set("mediumvioletred", "#C71585");
-hashTable.set("plum", "#DDA0DD");
+let ht = new HashTable(17);
+ht.set("maroon", "#800000");
+ht.set("yellow", "#FFFF00");
+ht.set("olive", "#808000");
+ht.set("salmon", "#FA8072");
+ht.set("lightcoral", "#F08080");
+ht.set("mediumvioletred", "#C71585");
+ht.set("plum", "#DDA0DD");
+ht.set("purple", "#DDA0DD");
+ht.set("violet", "#DDA0DD");
+
+ht.keys().forEach(function (key) {
+  console.log(ht.get(key));
+});
