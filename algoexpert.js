@@ -178,3 +178,26 @@ const twoNumberSum = (array, targetSum) => {
   // Time: O(nlog(n))
   // Space: O(1)
 };
+
+const isValidSubsequence = (array, sequence) => {
+  let mainIdx = 0;
+  let subIdx = 0;
+
+  while (mainIdx !== array.length && subIdx !== sequence.length) {
+    const mainEle = array[mainIdx];
+    const subEle = sequence[subIdx];
+
+    if (mainEle === subEle) {
+      mainIdx++;
+      subIdx++;
+    } else {
+      mainIdx++;
+    }
+  }
+
+  return subIdx === sequence.length;
+
+  // n = length of array
+  // Time: O(n)
+  // Space: O(1)
+};
