@@ -4,7 +4,8 @@ const solveSudoku = (board) => {
   return board;
 };
 
-// returns whether or not Sudoku is partial solved for a given position
+// returns whether or not Sudoku is partially solved for a given position
+// this is the core recursive algorithm
 const solvePartialSudoku = (row, col, board) => {
   let currentRow = row;
   let currentCol = col;
@@ -26,11 +27,14 @@ const solvePartialSudoku = (row, col, board) => {
   return solvePartialSudoku(currentRow, currentCol + 1, board);
 };
 
+// value is only valid at position if the board can be solved with that value at that position
+// basically, tries different values and performs the back tracking if neccessary by returning false
 const tryValuesAtPosition = (row, col, board) => {
   for (let value = 1; value < 10; value++) {
     if (isValidAtPosition(value, row, col, board)) {
       board[row][col] = value;
       // then tries to solve the rest of the board with this valid value
+      // if the bottom conditional returns false, then try the next value up until the rest of the board can be solved
       if (solvePartialSudoku(row, col + 1, board)) return true;
     }
   }
@@ -86,3 +90,5 @@ const isValidAtPosition = (value, row, col, board) => {
 // ];
 
 // console.log(solveSudoku(input));
+
+const balancedBrackets = (string) => {};
