@@ -63,6 +63,9 @@ const isValidAtPosition = (value, row, col, board) => {
   }
 
   return true;
+
+  // Time: O(1)
+  // Space: O(1)
 };
 
 // let input = [
@@ -113,4 +116,65 @@ const balancedBrackets = (string) => {
     }
   }
   return stack.length === 0;
+
+  // n = length of string
+  // Time: O(n)
+  // Space: O(n)
+};
+
+const twoNumberSum = (array, targetSum) => {
+  for (let i = 0; i < array.length - 1; i++) {
+    for (let j = i + 1; j < array.length; j++) {
+      if (array[i] + array[j] === targetSum) {
+        return [array[i], array[j]];
+      }
+    }
+  }
+  return [];
+
+  // n = length of array
+  // Time: O(n^2)
+  // Space: O(1)
+};
+
+const twoNumberSum = (array, targetSum) => {
+  const seen = {};
+
+  for (const num of array) {
+    let counterPart = targetSum - num;
+    if (counterPart in seen) {
+      return [counterPart, num];
+    } else {
+      seen[num] = true;
+    }
+  }
+
+  return [];
+
+  // n = length of array
+  // Time: O(n)
+  // Space: O(n)
+};
+
+const twoNumberSum = (array, targetSum) => {
+  array.sort((a, b) => a - b);
+  let left = 0;
+  let right = array.length - 1;
+
+  while (left < right) {
+    const sum = array[left] + array[right];
+    if (sum < targetSum) {
+      left++;
+    } else if (sum > targetSum) {
+      right--;
+    } else {
+      return [array[left], array[right]];
+    }
+  }
+
+  return [];
+
+  // n = length of array
+  // Time: O(nlog(n))
+  // Space: O(1)
 };
