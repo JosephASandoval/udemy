@@ -241,3 +241,32 @@ const sortedSquaredArray = (array) => {
   // Time: O(n)
   // Space: O(n)
 };
+
+const tournamentWinner = (competitions, results) => {
+  // keep track of each teams score using an object
+  // loop thru competitions and results to determine which teams gets 3 points
+  // return the team with the most point according to the scores object
+
+  const scores = {};
+  let max = -Infinity;
+  let overallWinner = null;
+
+  for (let i = 0; i < competitions.length; i++) {
+    const [homeTeam, awayTeam] = competitions[i];
+    let winner = results[i] === 0 ? awayTeam : homeTeam;
+    scores[winner] = (scores[winner] || 0) + 3;
+  }
+
+  for (const key in scores) {
+    if (scores[key] > max) {
+      max = scores[key];
+      overallWinner = key;
+    }
+  }
+
+  return overallWinner;
+
+  // n = length of array
+  // Time: O(n)
+  // Space: O(n)
+};
