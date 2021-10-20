@@ -91,4 +91,26 @@ const isValidAtPosition = (value, row, col, board) => {
 
 // console.log(solveSudoku(input));
 
-const balancedBrackets = (string) => {};
+const balancedBrackets = (string) => {
+  const openingBrackets = "([{";
+  const closingBrackets = ")]}";
+  const matchingBrackets = { ")": "(", "]": "[", "}": "{" };
+  const stack = [];
+
+  for (const char of string) {
+    if (openingBrackets.includes(char)) stack.push(char);
+
+    if (closingBrackets.includes(char)) {
+      if (stack.length === 0) {
+        return false;
+      } else {
+        if (stack[stack.length - 1] === matchingBrackets[char]) {
+          stack.pop();
+        } else {
+          return false;
+        }
+      }
+    }
+  }
+  return stack.length === 0;
+};
