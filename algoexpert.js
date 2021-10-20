@@ -1,5 +1,5 @@
 const solveSudoku = (board) => {
-  // Write your code here.
+  // start at the top left; return board after recusive call returns true
   solvePartialSudoku(0, 0, board);
   return board;
 };
@@ -8,23 +8,28 @@ const solvePartialSudoku = (row, col, board) => {
   let currentRow = row;
   let currentCol = col;
 
+  // checks if you need to wrap
   if (currentCol === board[currentRow].length) {
     currentRow++;
     currentCol = 0;
+    // finished solving b/c reached the end; stop condition
     if (currentRow === board.length) return true;
   }
 
+  // if position is zero, then try digits
   if (board[currentRow][currentCol] === 0) {
     return tryDigitsAtPosition(currentRow, currentCol, board);
   }
 
+  // move to next position recursively
   return solvePartialSudoku(currentRow, currentCol + 1, board);
 };
 
 const tryDigitsAtPosition = (row, col, board) => {
-  for (let digit = 1; digit < 10; digit++) {
-    if (isValidAtPosition(digit, row, col, board)) {
-      board[row][col] = digit;
+  for (let value = 1; value < 10; value++) {
+    if (isValidAtPosition(value, row, col, board)) {
+      board[row][col] = value;
+      // then tries to solve the rest of the board with this valid value
       if (solvePartialSudoku(row, col + 1, board)) return true;
     }
   }
