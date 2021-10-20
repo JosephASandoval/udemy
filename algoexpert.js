@@ -201,3 +201,43 @@ const isValidSubsequence = (array, sequence) => {
   // Time: O(n)
   // Space: O(1)
 };
+
+const sortedSquaredArray = (array) => {
+  const newArr = array.map((num) => Math.abs(num * num));
+  newArr.sort((a, b) => a - b);
+  return newArr;
+
+  // n = length of array
+  // Time: O(nlog(n))
+  // Space: O(n)
+};
+
+const sortedSquaredArray = (array) => {
+  // use two pointers one to the left, and one to the right
+  // use unshift to populate an array
+
+  const newArr = [];
+  let left = 0;
+  let right = array.length - 1;
+
+  while (left < right) {
+    const leftVal = array[left] ** 2;
+    const rightVal = array[right] ** 2;
+
+    if (leftVal > rightVal) {
+      newArr.unshift(leftVal);
+      left++;
+    } else {
+      newArr.unshift(rightVal);
+      right--;
+    }
+  }
+
+  newArr.unshift(array[left] ** 2);
+
+  return newArr;
+
+  // n = length of array
+  // Time: O(n)
+  // Space: O(n)
+};
