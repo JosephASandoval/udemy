@@ -1024,6 +1024,26 @@ const allTreePaths = (root) => {
   // Space: O(n)
 };
 
+const allTreePaths = (root) => {
+  // use DFS recursion
+
+  if (root === null) return [];
+
+  if (root.left === null && root.right === null) return [[root.val]];
+
+  const leftChildPaths = allTreePaths(root.left);
+  const rightChildPaths = allTreePaths(root.right);
+  const allChildPaths = [...leftChildPaths, ...rightChildPaths];
+
+  const paths = allChildPaths.map((path) => [root.val, ...path]);
+
+  return paths;
+
+  // n = number of nodes
+  // Time: O(n^2) because the spread operation is O(n)
+  // Space: O(n)
+};
+
 const treeLevels = (root) => {
   // use BFS and objects to tag each node with a level
 
