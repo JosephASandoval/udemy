@@ -4,6 +4,7 @@ const solveSudoku = (board) => {
   return board;
 };
 
+// returns whether or not Sudoku is partial solved for a given position
 const solvePartialSudoku = (row, col, board) => {
   let currentRow = row;
   let currentCol = col;
@@ -18,14 +19,14 @@ const solvePartialSudoku = (row, col, board) => {
 
   // if position is zero, then try digits
   if (board[currentRow][currentCol] === 0) {
-    return tryDigitsAtPosition(currentRow, currentCol, board);
+    return tryValuesAtPosition(currentRow, currentCol, board);
   }
 
   // move to next position recursively
   return solvePartialSudoku(currentRow, currentCol + 1, board);
 };
 
-const tryDigitsAtPosition = (row, col, board) => {
+const tryValuesAtPosition = (row, col, board) => {
   for (let value = 1; value < 10; value++) {
     if (isValidAtPosition(value, row, col, board)) {
       board[row][col] = value;
@@ -70,6 +71,18 @@ const isValidAtPosition = (value, row, col, board) => {
 //   [0, 7, 0, 3, 0, 0, 0, 1, 2],
 //   [1, 2, 0, 0, 0, 7, 4, 0, 0],
 //   [0, 4, 9, 2, 0, 6, 0, 0, 7],
+// ];
+
+// let input = [
+//   [7, 8, 5, 4, 3, 9, 1, 2, 6],
+//   [6, 1, 2, 8, 7, 5, 3, 4, 9],
+//   [4, 9, 3, 6, 2, 1, 5, 7, 8],
+//   [8, 5, 7, 9, 4, 3, 2, 6, 1],
+//   [2, 6, 1, 7, 5, 8, 9, 3, 4],
+//   [9, 3, 4, 1, 6, 2, 7, 8, 5],
+//   [5, 7, 8, 3, 9, 4, 6, 1, 2],
+//   [1, 2, 6, 5, 8, 7, 4, 9, 3],
+//   [3, 4, 9, 2, 1, 6, 8, 5, 7],
 // ];
 
 // console.log(solveSudoku(input));
