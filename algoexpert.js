@@ -10,21 +10,22 @@ const solvePartialSudoku = (row, col, board) => {
   let currentRow = row;
   let currentCol = col;
 
-  // checks if you need to wrap
+  // check if you need to wrap around the board while traversing the board
   if (currentCol === board[currentRow].length) {
     currentRow++;
     currentCol = 0;
+    
+    // checks if you've reached the end of the board
     // finished solving b/c reached the end; stop condition
     if (currentRow === board.length) return true;
   }
 
-  // if position is zero, then try digits
+  // if position is zero, then try digits. Else, move to next position
   if (board[currentRow][currentCol] === 0) {
     return tryValuesAtPosition(currentRow, currentCol, board);
+  } else {
+    return solvePartialSudoku(currentRow, currentCol + 1, board);
   }
-
-  // move to next position recursively
-  return solvePartialSudoku(currentRow, currentCol + 1, board);
 };
 
 // value is only valid at position if the board can be solved with that value at that position
@@ -35,10 +36,14 @@ const tryValuesAtPosition = (row, col, board) => {
       board[row][col] = value;
       // then tries to solve the rest of the board with this valid value
       // if the bottom conditional returns false, then try the next value up until the rest of the board can be solved
+      // this is the back tracking step: if this current value did not work for all future values then it will try a new value until one value is 100% correct
+      // it'll work to "solidify" values at the beginning and then to the end
       if (solvePartialSudoku(row, col + 1, board)) return true;
     }
   }
 
+  // if we've tried every value and none work then reset that position to zero and return false
+  // this will force the previous value to be changed by incrementing that value by 1 and trying again
   board[row][col] = 0;
   return false;
 };
@@ -396,16 +401,16 @@ const getNthFib = (n) => {
 
   // Time: O(2^n)
   // Space: O(n)
-}
+};
 
-const memoize = {1: 0, 2: 1}
+const memoize = { 1: 0, 2: 1 };
 function getNthFib(n) {
-	if (n in memoize) {
-		return memoize[n];
-	} else {
-		memoize[n] = getNthFib(n - 1) + getNthFib(n - 2)
-		return memoize[n];
-	}
+  if (n in memoize) {
+    return memoize[n];
+  } else {
+    memoize[n] = getNthFib(n - 1) + getNthFib(n - 2);
+    return memoize[n];
+  }
 
   // Time: O(n)
   // Space: O(n)
