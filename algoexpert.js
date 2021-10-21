@@ -325,3 +325,32 @@ const findClosestValueInBst = (tree, target) => {
   // Time: O(n)
   // Space: O(n)
 };
+
+const branchSums = (root) => {
+  // generate a 2d array with all branches from left to right
+  // return an array of sums for each branch in same order
+
+  const branches = fillBranches(root);
+  const sums = branches.map(getSum);
+  return sums;
+};
+
+const getSum = (arr) => {
+  return arr.reduce((acc, curr) => acc + curr, 0);
+};
+
+const fillBranches = (root) => {
+  if (root === null) return [];
+
+  if (root.left === null && root.right === null) return [[root.value]];
+
+  const leftBranches = fillBranches(root.left); // [[b]]
+  const rightBranches = fillBranches(root.right); // [[c]]
+  const allChildBranches = [...leftBranches, ...rightBranches];
+  const allBranches = allChildBranches.map((branch) => [root.value, ...branch]);
+  return allBranches;
+  
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
