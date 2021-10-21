@@ -349,7 +349,40 @@ const fillBranches = (root) => {
   const allChildBranches = [...leftBranches, ...rightBranches];
   const allBranches = allChildBranches.map((branch) => [root.value, ...branch]);
   return allBranches;
-  
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
+
+const nodeDepths = (root) => {
+  // first return a 2D array with all elements in their corresponding treeLevel
+  // then multiply the levels by the number of elements at each level
+  // finally, return the sum
+
+  const levels = [];
+  fillLevels(root, levels, 0);
+  const levelSum = levels.map(getSum);
+  return levelSum.reduce((acc, curr) => acc + curr, 0);
+};
+
+const getSum = (arr, idx) => {
+  const size = arr.length;
+  return size * idx;
+};
+
+const fillLevels = (root, levels, levelNum) => {
+  if (root === null) return;
+
+  if (levels.length === levelNum) {
+    levels[levelNum] = [root.value];
+  } else {
+    levels[levelNum].push(root.value);
+  }
+
+  fillLevels(root.left, levels, levelNum + 1);
+  fillLevels(root.right, levels, levelNum + 1);
+
   // n = number of nodes
   // Time: O(n)
   // Space: O(n)
