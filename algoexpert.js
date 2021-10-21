@@ -295,3 +295,33 @@ const nonConstructibleChange = (coins) => {
   // Time: O(nlog(n))
   // Space: O(1)
 };
+
+const findClosestValueInBst = (tree, target) => {
+  // traverse the tree using either dfs
+  // create a varible called closest set at Infinity
+  // when updating closest make sure to also update the closest value called answer
+
+  if (tree === null) return null;
+
+  let closest = Infinity;
+  let answer = null;
+
+  const stack = [tree];
+
+  while (stack.length > 0) {
+    const node = stack.pop();
+    const diff = Math.abs(target - node.value);
+    if (diff < closest) {
+      closest = diff;
+      answer = node.value;
+    }
+    if (node.right !== null) stack.push(node.right);
+    if (node.left !== null) stack.push(node.left);
+  }
+
+  return answer;
+
+  // n = number of nodes
+  // Time: O(n)
+  // Space: O(n)
+};
