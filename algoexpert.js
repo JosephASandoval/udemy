@@ -14,7 +14,7 @@ const solvePartialSudoku = (row, col, board) => {
   if (currentCol === board[currentRow].length) {
     currentRow++;
     currentCol = 0;
-    
+
     // checks if you've reached the end of the board
     // finished solving b/c reached the end; stop condition
     if (currentRow === board.length) return true;
@@ -109,17 +109,16 @@ const balancedBrackets = (string) => {
     if (openingBrackets.includes(char)) stack.push(char);
 
     if (closingBrackets.includes(char)) {
-      if (stack.length === 0) {
-        return false;
+      if (stack.length === 0) return false;
+
+      if (stack[stack.length - 1] === matchingBrackets[char]) {
+        stack.pop();
       } else {
-        if (stack[stack.length - 1] === matchingBrackets[char]) {
-          stack.pop();
-        } else {
-          return false;
-        }
+        return false;
       }
     }
   }
+
   return stack.length === 0;
 
   // n = length of string
