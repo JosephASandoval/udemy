@@ -387,3 +387,26 @@ const fillLevels = (root, levels, levelNum) => {
   // Time: O(n)
   // Space: O(n)
 };
+
+const getNthFib = (n) => {
+  if (n === 1) return 0;
+  if (n === 2) return 1;
+
+  return getNthFib(n - 1) + getNthFib(n - 2);
+
+  // Time: O(2^n)
+  // Space: O(n)
+}
+
+const memoize = {1: 0, 2: 1}
+function getNthFib(n) {
+	if (n in memoize) {
+		return memoize[n];
+	} else {
+		memoize[n] = getNthFib(n - 1) + getNthFib(n - 2)
+		return memoize[n];
+	}
+
+  // Time: O(n)
+  // Space: O(n)
+}
