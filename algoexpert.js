@@ -683,3 +683,19 @@ const isPalindrome = (string) => {
   // Time: O(n)
   // Space: O(1)
 };
+
+const caesarCipherEncryptor = (string, key) => {
+  const alpha = "abcdefghijklmnopqrstuvwxyz";
+  let newLetters = [];
+
+  for (const char of string) {
+    const charIdx = alpha.indexOf(char);
+    const newCharIdx = (charIdx + key) % 26;
+    newLetters.push(alpha[newCharIdx]);
+  }
+
+  return newLetters.join("");
+
+  // Time: O(n)
+  // Space: O(n)
+};
