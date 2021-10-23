@@ -458,3 +458,24 @@ const classPhotos = (redShirtHeights, blueShirtHeights) => {
   // Time: O(nlog(n))
   // Space: O(1)
 };
+
+const tandemBicycle = (redShirtSpeeds, blueShirtSpeeds, fastest) => {
+  redShirtSpeeds.sort((a, b) => a - b);
+  blueShirtSpeeds.sort((a, b) => a - b);
+  const len = redShirtSpeeds.length;
+  let totalSpeed = 0;
+
+  if (fastest) {
+    redShirtSpeeds.reverse();
+  }
+
+  for (let i = 0; i < len; i++) {
+    const maxSpeed = Math.max(redShirtSpeeds[i], blueShirtSpeeds[i]);
+    totalSpeed += maxSpeed;
+  }
+
+  return totalSpeed;
+
+  // Time: O(nlog(n))
+  // Space: O(1)
+};
