@@ -522,6 +522,8 @@ const productSum = (array, multiplier = 1) => {
 };
 
 const binarySearch = (array, target) => {
+  // approach: recursive
+
   if (array.length === 0) return -1;
 
   let probeIdx = Math.floor(array.length / 2);
@@ -538,6 +540,29 @@ const binarySearch = (array, target) => {
     else return subAnswer + probeIdx + 1;
   }
 
-  // Time: O(nlog(n))
+  // Time: O(log(n))
+  // Space: O(log(n)) due to the call stack
+};
+
+const binarySearch = (array, target) => {
+  // approach: iterative
+
+  let left = 0;
+  let right = array.length - 1;
+
+  while (left <= right) {
+    const middle = Math.floor((left + right) / 2);
+    const potentialTarget = array[middle];
+    if (target === potentialTarget) {
+      return middle;
+    } else if (target < potentialTarget) {
+      right = middle - 1;
+    } else {
+      left = middle + 1;
+    }
+  }
+  return -1;
+
+  // Time: O(log(n))
   // Space: O(1)
 };
