@@ -647,9 +647,39 @@ const selectionSort = (array) => {
 
     if (i !== smallestIdx) swap(i, smallestIdx, array);
   }
-  
+
   return array;
 
   // Time: O(n^2)
+  // Space: O(1)
+};
+
+const isPalindrome = (string) => {
+  const reversed = [];
+
+  for (let i = string.length - 1; i >= 0; i--) {
+    const char = string[i];
+    reversed.push(char);
+  }
+
+  return string === reversed.join("");
+
+  // Time: O(n)
+  // Space: O(n)
+};
+
+const isPalindrome = (string) => {
+  let left = 0;
+  let right = string.length - 1;
+
+  while (left < right) {
+    if (string[left] !== string[right]) return false;
+    left++;
+    right--;
+  }
+
+  return true;
+
+  // Time: O(n)
   // Space: O(1)
 };
