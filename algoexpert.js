@@ -589,3 +589,29 @@ const findThreeLargestNumbers = (array) => {
   // Time: O(n)
   // Space: O(1)
 };
+
+const swap = (idx1, idx2, arr) => {
+  [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
+};
+
+const bubbleSort = (array) => {
+  let sorted = false;
+
+  while (!sorted) {
+    sorted = true;
+
+    for (let i = 0; i < array.length - 1; i++) {
+      const curr = array[i];
+      const next = array[i + 1];
+      if (curr > next) {
+        swap(i, i + 1, array);
+        sorted = false;
+      }
+    }
+  }
+
+  return array;
+
+  // Time: O(n^2)
+  // Space: O(1)
+};
