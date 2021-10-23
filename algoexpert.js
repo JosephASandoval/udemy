@@ -699,3 +699,28 @@ const caesarCipherEncryptor = (string, key) => {
   // Time: O(n)
   // Space: O(n)
 };
+
+const runLengthEncoding = (string) => {
+  const encodedStringChars = [];
+  let currRunLength = 1;
+
+  for (let i = 1; i < string.length; i++) {
+    const currChar = string[i];
+    const prevChar = string[i - 1];
+
+    if (currChar !== prevChar || currRunLength === 9) {
+      encodedStringChars.push(currRunLength.toString());
+      encodedStringChars.push(prevChar);
+      currRunLength = 0;
+    }
+    currRunLength++;
+  }
+
+  encodedStringChars.push(currRunLength.toString());
+  encodedStringChars.push(string[string.length - 1]);
+
+  return encodedStringChars.join("");
+
+  // Time: O(n)
+  // Space: O(n)
+};
