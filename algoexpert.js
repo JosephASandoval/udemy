@@ -566,3 +566,26 @@ const binarySearch = (array, target) => {
   // Time: O(log(n))
   // Space: O(1)
 };
+
+const findThreeLargestNumbers = (array) => {
+  let threeLargest = [];
+
+  while (threeLargest.length < 3) {
+    let max = -Infinity;
+    let removeIdx = null;
+    for (let i = 0; i < array.length; i++) {
+      let curr = array[i];
+      if (curr > max) {
+        max = curr;
+        removeIdx = i;
+      }
+    }
+    threeLargest.unshift(max);
+    array.splice(removeIdx, 1);
+  }
+
+  return threeLargest;
+
+  // Time: O(n)
+  // Space: O(1)
+};
