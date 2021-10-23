@@ -615,3 +615,21 @@ const bubbleSort = (array) => {
   // Time: O(n^2)
   // Space: O(1)
 };
+
+const swap = (idx1, idx2, arr) => {
+  [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
+};
+
+const insertionSort = (array) => {
+  for (let i = 1; i < array.length; i++) {
+    let j = i;
+    while (j > 0 && array[j] < array[j - 1]) {
+      swap(j, j - 1, array);
+      j -= 1;
+    }
+  }
+  return array;
+
+  // Time: O(n^2)
+  // Space: O(1)
+};
