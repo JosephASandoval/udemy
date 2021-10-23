@@ -520,3 +520,24 @@ const productSum = (array, multiplier = 1) => {
   // Time: O(n)
   // Space: O(1)
 };
+
+const binarySearch = (array, target) => {
+  if (array.length === 0) return -1;
+
+  let probeIdx = Math.floor(array.length / 2);
+  const left = array.slice(0, probeIdx);
+  const right = array.slice(probeIdx + 1);
+
+  if (target === array[probeIdx]) {
+    return probeIdx;
+  } else if (target < array[probeIdx]) {
+    return binarySearch(left, target);
+  } else {
+    const subAnswer = binarySearch(right, target);
+    if (subAnswer === -1) return -1;
+    else return subAnswer + probeIdx + 1;
+  }
+
+  // Time: O(nlog(n))
+  // Space: O(1)
+};
