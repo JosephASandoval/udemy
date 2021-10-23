@@ -414,3 +414,18 @@ function getNthFib(n) {
   // Time: O(n)
   // Space: O(n)
 }
+
+const minimumWaitingTime = (queries) => {
+  queries.sort((a, b) => a - b);
+  let totalWaitingTime = 0;
+
+  for (let i = 0; i < queries.length; i++) {
+    const duration = queries[i];
+    const queriesLeft = queries.length - (i + 1);
+    totalWaitingTime += duration * queriesLeft;
+  }
+
+  return totalWaitingTime;
+  // Time: O(nlog(n))
+  // Space: O(1)
+};
