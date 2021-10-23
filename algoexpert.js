@@ -724,3 +724,18 @@ const runLengthEncoding = (string) => {
   // Time: O(n)
   // Space: O(n)
 };
+
+const generateDocument = (characters, document) => {
+  const charArr = characters.split("");
+
+  for (const char of document) {
+    if (!charArr.includes(char)) return false;
+    let idx = charArr.indexOf(char);
+    charArr.splice(idx, 1);
+  }
+
+  return true;
+
+  // Time: O(n)
+  // Space: O(1)
+};
