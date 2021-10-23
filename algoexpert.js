@@ -426,6 +426,35 @@ const minimumWaitingTime = (queries) => {
   }
 
   return totalWaitingTime;
+
+  // Time: O(nlog(n))
+  // Space: O(1)
+};
+
+const classPhotos = (redShirtHeights, blueShirtHeights) => {
+  redShirtHeights.sort((a, b) => a - b);
+  blueShirtHeights.sort((a, b) => a - b);
+
+  const len = redShirtHeights.length;
+  let greaterThan = 0;
+  let lessThan = 0;
+  let equalTo = 0;
+
+  for (let i = 0; i < len; i++) {
+    const redHeight = redShirtHeights[i];
+    const blueHeight = blueShirtHeights[i];
+
+    if (redHeight > blueHeight) {
+      greaterThan++;
+    } else if (redHeight < blueHeight) {
+      lessThan++;
+    } else {
+      equalTo++;
+    }
+  }
+
+  return greaterThan === len || lessThan === len;
+
   // Time: O(nlog(n))
   // Space: O(1)
 };
