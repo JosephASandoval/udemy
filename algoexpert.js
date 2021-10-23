@@ -479,3 +479,29 @@ const tandemBicycle = (redShirtSpeeds, blueShirtSpeeds, fastest) => {
   // Time: O(nlog(n))
   // Space: O(1)
 };
+
+const removeDuplicatesFromLinkedList = (linkedList) => {
+  if (linkedList === null) return null;
+  if (linkedList.next === null) return linkedList;
+
+  let prev = linkedList;
+  let curr = linkedList.next;
+  let next = null;
+
+  while (curr !== null) {
+    next = curr.next;
+    if (prev.value === curr.value) {
+      prev.next = next;
+      curr.next = null;
+      curr = next;
+    } else {
+      prev = curr;
+      curr = next;
+    }
+  }
+
+  return linkedList;
+
+  // Time: O(n)
+  // Space: O(1)
+};
