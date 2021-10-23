@@ -739,3 +739,21 @@ const generateDocument = (characters, document) => {
   // Time: O(n)
   // Space: O(1)
 };
+
+const firstNonRepeatingCharacter = (string) => {
+  const freqCounter = {};
+
+  for (const char of string) {
+    freqCounter[char] = (freqCounter[char] || 0) + 1;
+  }
+
+  for (let i = 0; i < string.length; i++) {
+    const char = string[i];
+    if (freqCounter[char] === 1) return i;
+  }
+
+  return -1;
+
+  // Time: O(n)
+  // Space: O(1)
+};
