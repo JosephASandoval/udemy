@@ -633,3 +633,23 @@ const insertionSort = (array) => {
   // Time: O(n^2)
   // Space: O(1)
 };
+
+const swap = (idx1, idx2, arr) => {
+  [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
+};
+
+const selectionSort = (array) => {
+  for (let i = 0; i < array.length; i++) {
+    let smallestIdx = i;
+    for (let j = i + 1; j < array.length; j++) {
+      if (array[j] < array[smallestIdx]) smallestIdx = j;
+    }
+
+    if (i !== smallestIdx) swap(i, smallestIdx, array);
+  }
+  
+  return array;
+
+  // Time: O(n^2)
+  // Space: O(1)
+};
