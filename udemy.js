@@ -200,6 +200,28 @@ function minSubArrayLen(arr, num) {
   return 0;
 }
 
+function findLongestSubstring(str) {
+  const seen = {};
+  let longest = 0;
+  let currLength = 0;
+  let start = 0;
+  let currDup = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+    if (seen[char]) {
+      currDup = seen[char];
+      start = Math.max(start, currDup);
+    }
+    currLength = i - start + 1;
+    longest = Math.max(longest, currLength);
+    seen[char] = i + 1;
+  }
+  return longest;
+}
+
+console.log(findLongestSubstring("longestsubstring")); // "ubstring" = 8
+
 function insertionSort(arr) {
   for (let i = 1; i < arr.length; i++) {
     let currVal = arr[i];
