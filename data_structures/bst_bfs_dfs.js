@@ -54,7 +54,7 @@ class BinarySearchTree {
     return false;
   }
 
-  BFS() {
+  bfs() {
     if (this.root === null) return [];
     const data = [];
     const queue = [];
@@ -71,7 +71,7 @@ class BinarySearchTree {
     return data;
   }
 
-  DFSPreOrder() {
+  dfsPreOrder() {
     if (this.root === null) return [];
     const data = [];
 
@@ -85,7 +85,7 @@ class BinarySearchTree {
     return data;
   }
 
-  DFSPostOrder() {
+  dfsPostOrder() {
     if (this.root === null) return [];
     const data = [];
 
@@ -99,7 +99,7 @@ class BinarySearchTree {
     return data;
   }
 
-  DFSInOrder() {
+  dfsInOrder() {
     if (this.root === null) return [];
     const data = [];
 
@@ -127,7 +127,7 @@ tree.insert(2);
 tree.insert(16);
 tree.insert(7);
 // console.log(tree.includes(2)); // true
-// console.log(tree.BFS()); // [ 10, 5, 13, 2, 7, 11, 16 ]
-// console.log(tree.DFSPreOrder()); // [ 10, 5, 2, 7, 13, 11, 16 ]
-// console.log(tree.DFSPostOrder()); // [ 2, 7, 5, 11, 16, 13, 10 ]
-// console.log(tree.DFSInOrder()); // [ 2, 5, 7, 10, 11, 13, 16 ]
+// console.log(tree.bfs()); // [ 10, 5, 13, 2, 7, 11, 16 ]
+// console.log(tree.dfsPreOrder()); // [ 10, 5, 2, 7, 13, 11, 16 ]
+// console.log(tree.dfsPostOrder()); // [ 2, 7, 5, 11, 16, 13, 10 ]
+// console.log(tree.dfsInOrder()); // [ 2, 5, 7, 10, 11, 13, 16 ]
