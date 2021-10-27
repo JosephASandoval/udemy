@@ -51,8 +51,8 @@ class Graph {
     const result = [];
     const visited = {};
     let currentVertex;
-
     visited[start] = true;
+
     while (stack.length) {
       currentVertex = stack.pop();
       result.push(currentVertex);
