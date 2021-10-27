@@ -49,10 +49,10 @@ const tryValuesAtPosition = (row, col, board) => {
 };
 
 const isValidAtPosition = (value, row, col, board) => {
-  const rowIsValid = !board[row].includes(value);
-  const colIsValid = !board.map((r) => r[col]).includes(value);
+  const isRowValid = !board[row].includes(value);
+  const isColValid = !board.map((r) => r[col]).includes(value);
 
-  if (!rowIsValid || !colIsValid) return false;
+  if (!isRowValid || !isColValid) return false;
 
   // Check subgrid contraint.
   const subgridRowStart = Math.floor(row / 3) * 3;
@@ -61,9 +61,9 @@ const isValidAtPosition = (value, row, col, board) => {
     for (let colIdx = 0; colIdx < 3; colIdx++) {
       const rowToCheck = subgridRowStart + rowIdx;
       const colToCheck = subgridColStart + colIdx;
-      const existingValue = board[rowToCheck][colToCheck];
+      const currentValue = board[rowToCheck][colToCheck];
 
-      if (existingValue === value) return false;
+      if (currentValue === value) return false;
     }
   }
 
@@ -183,7 +183,7 @@ const twoNumberSum = (array, targetSum) => {
   // Space: O(1)
 };
 
-const isValidSubsequence = (array, sequence) => {
+const isValidAtPositionSubsequence = (array, sequence) => {
   let mainIdx = 0;
   let subIdx = 0;
 
