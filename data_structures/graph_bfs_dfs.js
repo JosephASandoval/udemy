@@ -29,18 +29,19 @@ class Graph {
   dfsRecursive(start) {
     const result = [];
     const visited = {};
-    const adjacencyList = this.adjacencyList;
 
-    (function dfs(vertex) {
+    const dfs = (vertex) => {
       if (!vertex) return null;
       visited[vertex] = true;
       result.push(vertex);
-      adjacencyList[vertex].forEach((neighbor) => {
+      this.adjacencyList[vertex].forEach((neighbor) => {
         if (!visited[neighbor]) {
           return dfs(neighbor);
         }
       });
-    })(start);
+    };
+
+    dfs(start);
 
     return result;
   }
@@ -117,3 +118,9 @@ g.addEdge("E", "F");
 // RESULT: [A, B, C, D, E, F]
 
 console.log(g);
+console.log(g.dfsRecursive("A"));
+console.log(g.dfsIterative("A"));
+console.log(g.bfs("A"));
+console.log(g.dfsRecursive("B"));
+console.log(g.dfsIterative("B"));
+console.log(g.bfs("B"));
