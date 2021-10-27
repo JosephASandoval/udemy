@@ -1,4 +1,4 @@
-class Graph {
+class UnweightedGraph {
   constructor() {
     this.adjacencyList = {};
   }
@@ -89,7 +89,7 @@ class Graph {
   }
 }
 
-let g = new Graph();
+let g = new UnweightedGraph();
 
 g.addVertex("A");
 g.addVertex("B");
