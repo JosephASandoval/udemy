@@ -765,6 +765,6 @@ const depthFirstSearch = (array) => {
   }
   return array;
 
-  // Time: O(v + e) where v = vertice and e = edge
-  // Space: O(v)
+  // Time: O(n + e) where n = node and e = edge
+  // Space: O(n)
 };
