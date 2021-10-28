@@ -89,22 +89,22 @@ class UnweightedGraph {
   }
 }
 
-let g = new UnweightedGraph();
+let unweightedGraph = new UnweightedGraph();
 
-g.addVertex("A");
-g.addVertex("B");
-g.addVertex("C");
-g.addVertex("D");
-g.addVertex("E");
-g.addVertex("F");
+unweightedGraph.addVertex("A");
+unweightedGraph.addVertex("B");
+unweightedGraph.addVertex("C");
+unweightedGraph.addVertex("D");
+unweightedGraph.addVertex("E");
+unweightedGraph.addVertex("F");
 
-g.addEdge("A", "B");
-g.addEdge("A", "C");
-g.addEdge("B", "D");
-g.addEdge("C", "E");
-g.addEdge("D", "E");
-g.addEdge("D", "F");
-g.addEdge("E", "F");
+unweightedGraph.addEdge("A", "B");
+unweightedGraph.addEdge("A", "C");
+unweightedGraph.addEdge("B", "D");
+unweightedGraph.addEdge("C", "E");
+unweightedGraph.addEdge("D", "E");
+unweightedGraph.addEdge("D", "F");
+unweightedGraph.addEdge("E", "F");
 
 //          A
 //        /   \
@@ -117,10 +117,10 @@ g.addEdge("E", "F");
 // QUEUE: []
 // RESULT: [A, B, C, D, E, F]
 
-console.log(g);
-console.log(g.dfsRecursive("A"));
-console.log(g.dfsIterative("A"));
-console.log(g.bfs("A"));
-console.log(g.dfsRecursive("B"));
-console.log(g.dfsIterative("B"));
-console.log(g.bfs("B"));
+console.log(unweightedGraph);
+console.log(unweightedGraph.dfsRecursive("A"));
+console.log(unweightedGraph.dfsIterative("A"));
+console.log(unweightedGraph.bfs("A"));
+console.log(unweightedGraph.dfsRecursive("B"));
+console.log(unweightedGraph.dfsIterative("B"));
+console.log(unweightedGraph.bfs("B"));
