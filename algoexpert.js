@@ -757,3 +757,14 @@ const firstNonRepeatingCharacter = (string) => {
   // Time: O(n)
   // Space: O(1)
 };
+
+const depthFirstSearch = (array) => {
+  array.push(this.name);
+  for (const child of this.children) {
+    child.depthFirstSearch(array);
+  }
+  return array;
+
+  // Time: O(v + e) where v = vertice and e = edge
+  // Space: O(v)
+};
